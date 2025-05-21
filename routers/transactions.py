@@ -4,7 +4,6 @@ from typing import List, Optional
 from db.database import get_db
 from schemas.transaction import TransactionCreateSchema, TransactionOutSchema
 from crud.transactions import create_transaction, get_transactions
-from schemas.transaction import TransactionOutSchema
 
 
 router = APIRouter(prefix="/transactions", tags=["Transactions"])
@@ -22,3 +21,4 @@ async def list_transactions(
     db: AsyncSession = Depends(get_db)
 ):
     return await get_transactions(db, type=type, sort=sort)
+

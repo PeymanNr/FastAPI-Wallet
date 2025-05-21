@@ -2,7 +2,7 @@ from db.models import Transaction
 from schemas.transaction import TransactionCreateSchema
 from sqlalchemy.ext.asyncio import AsyncSession
 from typing import List, Optional
-from sqlalchemy import select
+from sqlalchemy import select, func
 
 
 async def create_transaction(db: AsyncSession, transaction: TransactionCreateSchema):
@@ -15,6 +15,7 @@ async def create_transaction(db: AsyncSession, transaction: TransactionCreateSch
     await db.commit()
     await db.refresh(new_transaction)
     return new_transaction
+
 
 async def get_transactions(
     db: AsyncSession,
@@ -33,3 +34,5 @@ async def get_transactions(
 
     result = await db.execute(stmt)
     return result.scalars().all()
+
+
