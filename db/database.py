@@ -1,6 +1,5 @@
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 from databases import Database
-from contextlib import asynccontextmanager
 from sqlalchemy.orm import DeclarativeBase
 
 
